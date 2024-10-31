@@ -87,7 +87,7 @@ main {
 }
 
 .panel__max__inputs {
-    flex-basis: 80%;
+    flex-basis: 100%;
 }
 
 .panel__min__inputs {
@@ -186,6 +186,7 @@ input[type="radio"]:checked+.panel__method {
     width: 99.7%;
     height: 100%;
     resize: none;
+    padding-left: 2px;
     outline: 0;
     cursor: default;
 }
@@ -213,5 +214,38 @@ input[type="radio"]:checked+.panel__method {
     }
     h1 {
         font-size: 16pt;
+    }
+}
+
+.displaylt400px {
+    display: none;
+}
+
+@media screen and (width < 400px) {
+    .panel {
+        flex-direction: column;
+    }
+    * {
+        font-size: 10.5pt;
+    }
+    .panel__span {
+        font-size: 8.5pt;
+    }
+    .panel__input,
+    .panel__output {
+        flex-basis: auto;
+    }
+    h1 {
+        font-size: 14.5pt;
+    }
+    .hidegt400px {
+        display: none;
+    }
+    .displaylt400px {
+        display: block;
+    }
+    #consoleOutput {
+        width: 100%;
+        height: 300px;
     }
 }
