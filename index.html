@@ -12,17 +12,18 @@
 </head>
 
 <body>
-    <header class="header">
-        <div class="header__content">
-            <h1>Численное интегрирование квадратурными формулами</h1>
-        </div>
-    </header>
+    <div class="display-change-orientation">Переверните устройство для комфортной работы</div>
     <main>
+        <header class="header">
+            <div class="header__content">
+                <h1>Численное интегрирование квадратурными формулами</h1>
+            </div>
+        </header>
         <div class="main__content">
             <div id="plotDiv"></div>
             <div class="pre__panel">
                 <h2>Ввод:</h2>
-                <h2 class="hidegt400px">Вывод:</h2>
+                <h2 class="hidegt570px">Вывод:</h2>
             </div>
             <div class="panel">
                 <form class="panel__input" onsubmit="event.preventDefault(); calc(event.target);" onkeydown="if (event.key == 'Enter') {event.preventDefault();}" method="post">
@@ -105,7 +106,7 @@
                     </div>
                 </form>
                 <div class="panel__output">
-                    <h2 class="displaylt400px" style="text-align: center; border-bottom: 1px solid green;">Вывод:</h2>
+                    <h2 class="displaylt570px" style="text-align: center; border-bottom: 1px solid green;">Вывод:</h2>
                     <textarea id="consoleOutput" readonly></textarea>
                 </div>
             </div>
