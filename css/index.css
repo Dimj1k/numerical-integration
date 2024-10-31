@@ -51,7 +51,7 @@ main {
 }
 
 .footer__content {
-    width: 1080px;
+    width: 100%;
 }
 
 #plotDiv {
@@ -91,7 +91,7 @@ main {
 }
 
 .panel__min__inputs {
-    width: 100px;
+    width: 20%;
 }
 
 input[type="radio"] {
@@ -193,4 +193,25 @@ input[type="radio"]:checked+.panel__method {
 .pre__panel {
     display: flex;
     justify-content: space-around;
+}
+
+@media screen and (width < 1080px) {
+    .main__content {
+        width: 100%;
+    }
+    .header {
+        width: 100%;
+    }
+    #plotDiv {
+        width: 100%;
+    }
+    * {
+        font-size: 12pt;
+    }
+    .panel__span {
+        font-size: 10pt;
+    }
+    h1 {
+        font-size: 16pt;
+    }
 }
