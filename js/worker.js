@@ -33,6 +33,7 @@ function work() {
             }
             const { eps, step } = this.options;
             let { x: stepByX } = step;
+            stepByX *= 2;
             let sOld = Infinity,
                 sNew = 0,
                 attempt = -1;

@@ -12,7 +12,7 @@ worker.onmessage = (e) => {
             {
                 const { history } = data;
                 totalTime += history.perf;
-                consoleOutput.value += `Вычислен y(x) = ${history.fn} за ${history.perf.toFixed(3)} мс. на x ∊ [${history.a}, ${history.b}]\nКоличество итераций: ${history.attempt}\nЗначение интеграла ${history.S}\n`;
+                consoleOutput.value += `Вычислен y(x) = ${history.fn} за ${history.perf.toFixed(3)} мс. на x ∊ [${history.a}, ${history.b}]\nКоличество итераций: ${history.attempt}, шаг по x: ${history.endStep}\nЗначение интеграла ${history.S.toFixed(6)}\n`;
                 break;
             }
         case 'plotFn':
@@ -80,7 +80,7 @@ function calc(target) {
     if (!fns.length) {
         return;
     }
-    let out = `Пределы интегрирования от ${a} до ${b}\n${method != 'Gauss' ? `Метод ${ruMethods[method]}` : `Метод ${ruMethods[method]}, порядок полинома Лежандра ${polynom}`}\n`;
+    let out = `Начальный шаг: ${step}\nПределы интегрирования от ${a} до ${b}\n${method != 'Gauss' ? `Метод ${ruMethods[method]}` : `Метод ${ruMethods[method]}, порядок полинома Лежандра ${polynom}`}\n`;
     for (const [i, fns_i] of fns.entries()) {
         const haveY0 = fns_i[1]; 
         if (haveY0) {
