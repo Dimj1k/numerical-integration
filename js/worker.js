@@ -105,7 +105,7 @@ function work() {
     class GaussLegendre extends NumericalIntegral {
 
         constructor(...args) {
-            super(...args)
+            super(...args);
             switch (this.options.polynom) {
                 case 1:
                     {

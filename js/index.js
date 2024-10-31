@@ -47,13 +47,13 @@ worker.onmessage = (e) => {
                 break;
             }
     }
-}
+};
 
 const ruMethods = {
     'trapezoidal': 'трапеций',
     'Simpson': 'Симпсона',
     'Gauss': 'Гаусса-Лежандра'
-}
+};
 
 function calc(target) {
     const {
