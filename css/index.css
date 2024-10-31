@@ -65,12 +65,12 @@ main {
 }
 
 .panel__input {
-    flex-basis: 50%;
+    flex-basis: 55%;
     border-top: 1px solid green;
 }
 
 .panel__output {
-    flex-basis: 50%;
+    flex-basis: 45%;
     border-top: 1px solid green;
 }
 
