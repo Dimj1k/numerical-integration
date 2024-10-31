@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, initial-scale=1.0">
+    <link href="css/index.css" rel="stylesheet" />
+    <script defer src="js/worker.js"></script>
+    <script defer src="js/index.js"></script>
+    <script defer src="js/events.js"></script>
+    <title>Численное интегрирование</title>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header__content">
+            <h1>Численное интегрирование квадратурными формулами</h1>
+        </div>
+    </header>
+    <main>
+        <div class="main__content">
+            <div id="plotDiv"></div>
+            <div class="pre__panel">
+                <h2>Ввод:</h2>
+                <h2>Вывод:</h2>
+            </div>
+            <div class="panel">
+                <form class="panel__input" onsubmit="event.preventDefault(); calc(event.target);" onkeydown="if (event.key == 'Enter') {event.preventDefault();}" method="post">
+                    <div class="panel__border" style="display: flex; flex-direction: column;">
+                        <div id="all_functions" style="display: flex; gap: 2px; flex-direction: column;">
+                            <div class="panel__input__function">
+                                <div class="panel__max__inputs">
+                                    <div class="vertical-label">
+                                        <label for="f1">
+                                            <span class="panel__span">Кусочно-заданная функция 1 y(x)</span>
+                                        </label>
+                                        <input id="f1" name="functions" placeholder="exp(-pow(x, 2))" value="exp(-pow(x, 2))">
+                                    </div>
+                                    <div class="vertical-label">
+                                        <label for="y01">
+                                            <span class="panel__span">y0(x)</span>
+                                        </label>
+                                        <input id="y01" name="functions" placeholder="0" value="0">
+                                    </div>
+                                </div>
+                                <div class="panel__min__inputs">
+                                    <div class="vertical-label"><label for="f1a"><span class="panel__span">Начало x</span></label><input name="limFunctions" value="-3" id="f1a"></div>
+                                    <div class="vertical-label"><label for="f1b"><span class="panel__span">Конец x</span></label><input name="limFunctions" value="3" id="f1b"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="button" class="panel__button" onkeyup="addNewFunction(event);" onclick="addNewFunction(event);" value="Добавить кусочно-заданную функцию">
+                    </div>
+                    <div class="panel__border">
+                        <span class="panel__span">Методы численного интегрирования</span>
+                        <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly;" id="methods">
+                            <input type="radio" value="trapezoidal" name="method" id="trapezoidal" checked><label role="button" tabindex="0" onkeyup="methodSelect(event);" for="trapezoidal" class="panel__method">Трапеций</label>
+                            <input type="radio" value="Simpson" name="method" id="Simpson"><label role="button" tabindex="0" onkeyup="methodSelect(event);" for="Simpson" class="panel__method">Симпсона</label>
+                            <input type="radio" value="Gauss" name="method" id="Gauss"><label tabindex="0" role="button" for="Gauss" onkeyup="methodSelect(event);" class="panel__method">Гаусса-Лежандра</label>
+                            <input type="radio" value="MonteKarlo" name="method" id="MonteKarlo" disabled><label tabindex="0" role="button" onkeyup="methodSelect(event);" for="MonteKarlo" class="panel__method">Монте-Карло</label>
+                        </div>
+                    </div>
+                    <div class="panel__border panel__divider">
+                        <div class="panel__divider__first">
+                            <span class="panel__span">Пределы интегрирования</span>
+                            <div style="display: flex;">
+                                <div class="vertical-label mb2">
+                                    <label for="min_lim">
+                                        <span class="panel__span">Начало x</span>
+                                    </label>
+                                    <input id="min_lim" name="a" value="-3" class="panel__limit">
+                                </div>
+                                <div class="vertical-label">
+                                    <label for="max_lim">
+                                        <span class="panel__span">Конец x</span>
+                                    </label>
+                                    <input id="max_lim" name="b" value="3" class="panel__limit">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel__divider__second">
+                            <span class="panel__span">Точность</span>
+                            <div class="vertical-label">
+                                <label for="eps">
+                                    <span class="panel__span">&epsilon;</span>
+                                </label>
+                                <input class="panel__limit" style="margin-left: 3px;" name="eps" value="0.0000001" type="number" min="0" step="1e-12" id="eps">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel__calc">
+                        <div class="vertical-label">
+                            <label for="step">
+                                <span class="panel__span">Начальный шаг по x</span>
+                            </label>
+                            <input id="step" type="number" name="step" value="1" step="1e-15">
+                        </div>
+                        <div class="vertical-label">
+                            <label for="polynom">
+                                <span class="panel__span">Порядок Лежандра</span>
+                            </label>
+                            <input id="polynom" type="number" name="polynom" value="3" step="1" min="1" max="5">
+                        </div>
+                        <input type="submit" class="panel__button mt2" name="calculate" id="calculate" value="Посчитать">
+                    </div>
+                </form>
+                <div class="panel__output">
+                    <textarea id="consoleOutput" readonly></textarea>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer__content">
+                <span>2024.</span>
+            </div>
+        </footer>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly-basic.min.js" integrity="sha512-PPyN+qK3r/jIXgb7V8mr+PUyli/ccMkqlClEvrshWcbSpIy9wqYpgtna3gfFUD62WMC590GuX9kC350F0PqOuQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- <script src="js/plotly-basic.min.js"></script> -->
+    <script src="js/ru.js"></script>
+    <script>
+        Plotly.register(RuPlotly);
+        Plotly.setPlotConfig({
+            locale: 'ru'
+        });
+        const plot = Plotly.newPlot('plotDiv', [], {
+            hovermode: false,
+            xaxis: {
+                title: 'x'
+            },
+            yaxis: {
+                title: "y"
+            },
+            legend: {
+                orientation: 'h',
+            },
+            margin: {
+                l: 50,
+                r: 25,
+                t: 25,
+            },
+            paper_bgcolor: 'rgb(240, 240, 240)',
+        });
+    </script>
+</body>
+
+</html>

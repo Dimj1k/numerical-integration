@@ -1,0 +1,196 @@
+* {
+    font-size: 16pt;
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1 {
+    font-size: 20pt;
+    padding: 2px;
+}
+
+h2 {
+    padding-left: 7px;
+}
+
+html,
+body {
+    height: 100%;
+    max-width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(220, 220, 220);
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.main__content {
+    background-color: rgb(240, 240, 240);
+    width: 1080px;
+    height: 100%;
+}
+
+.header {
+    background-color: rgb(74, 252, 58);
+    width: 1080px;
+    text-align: center;
+}
+
+.footer {
+    flex: 0 0 auto;
+    display: flex;
+    background-color: rgb(74, 252, 58);
+    text-align: right;
+}
+
+.footer__content {
+    width: 1080px;
+}
+
+#plotDiv {
+    width: 1080px;
+    height: 540px;
+}
+
+.panel {
+    display: flex;
+    gap: 3px;
+}
+
+.panel__input {
+    flex-basis: 50%;
+    border-top: 1px solid green;
+}
+
+.panel__output {
+    flex-basis: 50%;
+    border-top: 1px solid green;
+}
+
+.panel__input__function {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2px;
+    border-bottom: 1px solid;
+}
+
+.panel__span {
+    padding-left: 12px;
+    font-size: 14pt;
+}
+
+.panel__max__inputs {
+    flex-basis: 80%;
+}
+
+.panel__min__inputs {
+    width: 100px;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.vrl {
+    writing-mode: vertical-rl;
+}
+
+.panel__method {
+    border: 1px solid rgb(49, 206, 49);
+}
+
+input[type="radio"]:disabled+.panel__method {
+    display: none;
+}
+
+input[type="radio"]+.panel__method {
+    cursor: pointer;
+}
+
+input[type="radio"]+.panel__method:hover {
+    background-color: rgb(167, 255, 226);
+}
+
+input[type="radio"]:checked+.panel__method {
+    background-color: aquamarine;
+}
+
+.panel__border {
+    border-bottom: 1px solid;
+    padding-bottom: 2px;
+}
+
+.panel__divider {
+    display: flex;
+    padding-bottom: 0;
+}
+
+.panel__divider__first {
+    flex-basis: 70%;
+    border-right: 1px solid;
+}
+
+.panel__divider__second {
+    flex-basis: 30%;
+}
+
+.panel__limit {
+    width: 80%;
+}
+
+.panel__calc {
+    display: flex;
+    justify-content: space-between;
+}
+
+.vertical-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.panel__button {
+    background-color: rgb(235, 235, 235);
+    border: 1px solid green;
+    cursor: pointer;
+}
+
+.panel__button:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.panel__button:active {
+    background-color: rgb(230, 230, 230);
+}
+
+.panel__button:disabled {
+    cursor: default;
+    background-color: rgb(235, 235, 235);
+}
+
+.mt2 {
+    margin-top: 2px;
+}
+
+.mb2 {
+    margin-bottom: 2px;
+}
+
+#consoleOutput {
+    width: 99.7%;
+    height: 100%;
+    resize: none;
+    outline: 0;
+    cursor: default;
+}
+
+.pre__panel {
+    display: flex;
+    justify-content: space-around;
+}
