@@ -26,11 +26,6 @@ worker.onmessage = (e) => {
                         plotDiv.data.push({...data.points, name: 'y0(x) = ' + data.fn, fill: 'tonexty', fillcolor: '#00000044' });
                     }
                 }
-                const maxY = Math.max(...data.points.y) * 1.25;
-                if (maxY > plotDiv.data[0].y[1]) {
-                    plotDiv.data[0].y = [0, maxY];
-                    plotDiv.data[1].y = [0, maxY];
-                }
                 Plotly.redraw(plotDiv);
                 break;
             }
@@ -66,9 +61,7 @@ function calc(target) {
         polynom: { value: polynom },
         limFunctions,
     } = target;
-    plotDiv.data = [{ x: [+a, +a], y: [0, 0], line: { color: 'grey', dash: 'dot' }, mode: 'lines', showlegend: false },
-        { x: [+b, +b], y: [0, 0], line: { color: 'grey', dash: 'dot' }, mode: 'lines', showlegend: false }
-    ];
+    plotDiv.data = [];
     Plotly.redraw(plotDiv);
     totalTime = 0;
     const limsA = [],
