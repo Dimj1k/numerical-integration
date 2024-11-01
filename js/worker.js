@@ -36,7 +36,7 @@ function work() {
             stepByX *= 2;
             let sOld = Infinity,
                 sNew = 0,
-                attempt = -1;
+                attempt = 0;
             const start = performance.now();
             if (this.dim == 1) {
                 while (true) {
