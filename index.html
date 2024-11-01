@@ -12,14 +12,14 @@
 </head>
 
 <body>
-    <div class="display-change-orientation">Переверните устройство для комфортной работы</div>
-    <main>
+    <div class="display-change-orientation">Переверните устройство для комфортной работы с приложением</div>
+    <div class="wrapper">
         <header class="header">
             <div class="header__content">
                 <h1>Численное интегрирование квадратурными формулами</h1>
             </div>
         </header>
-        <div class="main__content">
+        <main>
             <div id="plotDiv"></div>
             <div class="pre__panel">
                 <h2>Ввод:</h2>
@@ -55,10 +55,10 @@
                     <div class="panel__border">
                         <span class="panel__span">Методы численного интегрирования</span>
                         <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly;" id="methods">
-                            <input type="radio" value="trapezoidal" name="method" id="trapezoidal" checked><label role="button" tabindex="0" onkeyup="methodSelect(event);" for="trapezoidal" class="panel__method">Трапеций</label>
-                            <input type="radio" value="Simpson" name="method" id="Simpson"><label role="button" tabindex="0" onkeyup="methodSelect(event);" for="Simpson" class="panel__method">Симпсона</label>
-                            <input type="radio" value="Gauss" name="method" id="Gauss"><label tabindex="0" role="button" for="Gauss" onkeyup="methodSelect(event);" class="panel__method">Гаусса-Лежандра</label>
-                            <input type="radio" value="MonteKarlo" name="method" id="MonteKarlo" disabled><label tabindex="0" role="button" onkeyup="methodSelect(event);" for="MonteKarlo" class="panel__method">Монте-Карло</label>
+                            <input type="radio" value="trapezoidal" name="method" id="trapezoidal" checked><label role="radio" tabindex="0" onkeyup="methodSelect(event);" for="trapezoidal" class="panel__method">Трапеций</label>
+                            <input type="radio" value="Simpson" name="method" id="Simpson"><label role="radio" tabindex="0" onkeyup="methodSelect(event);" for="Simpson" class="panel__method">Симпсона</label>
+                            <input type="radio" value="Gauss" name="method" id="Gauss"><label tabindex="0" role="radio" for="Gauss" onkeyup="methodSelect(event);" class="panel__method">Гаусса-Лежандра</label>
+                            <input type="radio" value="MonteKarlo" name="method" id="MonteKarlo" disabled><label tabindex="0" role="radio" onkeyup="methodSelect(event);" for="MonteKarlo" class="panel__method">Монте-Карло</label>
                         </div>
                     </div>
                     <div class="panel__border panel__divider">
@@ -110,13 +110,13 @@
                     <textarea id="consoleOutput" readonly></textarea>
                 </div>
             </div>
-        </div>
+        </main>
         <footer class="footer">
             <div class="footer__content">
                 <span>2024.</span>
             </div>
         </footer>
-    </main>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly-basic.min.js" integrity="sha512-PPyN+qK3r/jIXgb7V8mr+PUyli/ccMkqlClEvrshWcbSpIy9wqYpgtna3gfFUD62WMC590GuX9kC350F0PqOuQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- <script src="js/plotly-basic.min.js"></script> -->
     <script src="js/ru.js"></script>
@@ -125,23 +125,30 @@
         Plotly.setPlotConfig({
             locale: 'ru'
         });
-        const plot = Plotly.newPlot('plotDiv', [], {
-            hovermode: false,
-            xaxis: {
-                title: 'x'
-            },
-            yaxis: {
-                title: "y"
-            },
-            legend: {
-                orientation: 'h',
-            },
-            margin: {
-                l: 50,
-                r: 25,
-                t: 25,
-            },
-            paper_bgcolor: 'rgb(240, 240, 240)',
+
+        function newPlot() {
+            Plotly.newPlot('plotDiv', [], {
+                hovermode: false,
+                xaxis: {
+                    title: 'x'
+                },
+                yaxis: {
+                    title: "y"
+                },
+                legend: {
+                    orientation: 'h',
+                },
+                margin: {
+                    l: 50,
+                    r: 25,
+                    t: 25,
+                },
+                paper_bgcolor: 'rgb(240, 240, 240)',
+            });
+        }
+        newPlot();
+        window.addEventListener('resize', newPlot, {
+            passive: true
         });
     </script>
 </body>
