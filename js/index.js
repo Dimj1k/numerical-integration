@@ -19,11 +19,11 @@ worker.onmessage = (e) => {
             {
                 const length = plotDiv.data.length;
                 if (!data.isY0) {
-                    plotDiv.data.push({...data.points, name: 'y(x) = ' + data.fn, fill: 'tozeroy', fillcolor: "#00000044" });
+                    plotDiv.data.push(Object.assign(data.points, { name: 'y(x) = ' + data.fn, fill: 'tozeroy', fillcolor: "#00000044" }));
                 } else {
                     if (data.fn != '0') {
                         plotDiv.data[length - 1].fill = undefined;
-                        plotDiv.data.push({...data.points, name: 'y0(x) = ' + data.fn, fill: 'tonexty', fillcolor: '#00000044' });
+                        plotDiv.data.push(Object.assign(data.points, { name: 'y0(x) = ' + data.fn, fill: 'tonexty', fillcolor: '#00000044' }));
                     }
                 }
                 Plotly.redraw(plotDiv);
@@ -69,7 +69,7 @@ function calc(target) {
         fns = [];
     for (let i = 0; i !== limFunctions.length; i += 2) {
         const [{ value: fn }, { value: y0 }, { value: minX }, { value: maxX }] = [functions[i], functions[i + 1], limFunctions[i], limFunctions[i + 1]];
-        if (!fn && !minX && !maxX) {
+        if (!fn || !minX || !maxX) {
             continue;
         }
         fns.push([fn.replace("X", 'x').replace('Ч', 'x').replace('ч', 'x'), y0 && y0 != 0 ? y0.replace("X", 'x').replace('Ч', 'x').replace('ч', 'x') : undefined]);

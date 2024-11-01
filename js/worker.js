@@ -196,7 +196,7 @@ function work() {
                                 });
                                 postMessage({ status: 'plotFn', points: m.origPoints, fn: m.strFn, isY0: j == 1 });
                                 m.integrate();
-                                postMessage({ status: 'history', history: {...m.history, fn: m.strFn } });
+                                postMessage({ status: 'history', history: Object.assign(m.history, { fn: m.strFn }) });
                                 allFn.push(m);
                             }
                             totalS += allFn.slice(1).reduce((prev, { S: curr }) => prev - curr, allFn[0].S);
