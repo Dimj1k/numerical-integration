@@ -88,9 +88,9 @@ function calc(target) {
         } else {
             out += `Интегрируемая функция y(x) = ${fns_i[0]}\n`;
         }
-        out += `Кусочно задан${haveY0 ? 'ы' : 'а'} на x ∊ [${limsA[i]}, ${limsB[i]}]\n\n-------------------\n\n`;
+        out += `Кусочно задан${haveY0 ? 'ы' : 'а'} на x ∊ [${limsA[i]}, ${limsB[i]}]\n\n`;
     }
-    consoleOutput.value += out;
+    consoleOutput.value += out + '\n-------------------\n\n';
     worker.postMessage({ status: 'init', a: limsA, b: limsB, eps, step: { x: step }, fns, method, polynom });
     calculate.disabled = true;
 }
