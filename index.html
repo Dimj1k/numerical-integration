@@ -45,8 +45,8 @@
                                     </div>
                                 </div>
                                 <div class="panel__min__inputs">
-                                    <div class="vertical-label"><label for="f1a"><span class="panel__span">Начало x</span></label><input name="limFunctions" value="-3" id="f1a"></div>
-                                    <div class="vertical-label"><label for="f1b"><span class="panel__span">Конец x</span></label><input name="limFunctions" value="3" id="f1b"></div>
+                                    <div class="vertical-label"><label for="f1a"><span class="panel__span">Начало x</span></label><input name="limFunctions" value="-3" type="tel" id="f1a"></div>
+                                    <div class="vertical-label"><label for="f1b"><span class="panel__span">Конец x</span></label><input name="limFunctions" value="3" type="tel" id="f1b"></div>
                                 </div>
                             </div>
                         </div>
@@ -69,13 +69,13 @@
                                     <label for="min_lim">
                                         <span class="panel__span">Начало x</span>
                                     </label>
-                                    <input id="min_lim" name="a" value="-3" class="panel__limit">
+                                    <input id="min_lim" type="tel" name="a" value="-3" class="panel__limit">
                                 </div>
                                 <div class="vertical-label">
                                     <label for="max_lim">
                                         <span class="panel__span">Конец x</span>
                                     </label>
-                                    <input id="max_lim" name="b" value="3" class="panel__limit">
+                                    <input id="max_lim" type="tel" name="b" value="3" class="panel__limit">
                                 </div>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                                 <label for="eps">
                                     <span class="panel__span">&epsilon;</span>
                                 </label>
-                                <input class="panel__limit" style="margin-left: 3px;" name="eps" value="0.0000001" type="number" min="0" step="1e-12" id="eps">
+                                <input class="panel__limit" style="margin-left: 3px;" name="eps" type="tel" value="0.0000001" type="number" id="eps">
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                             <label for="step">
                                 <span class="panel__span">Начальный шаг по x</span>
                             </label>
-                            <input id="step" type="number" name="step" value="1" step="1e-15">
+                            <input id="step" type="tel" name="step" value="1">
                         </div>
                         <div class="vertical-label">
                             <label for="polynom">
@@ -127,7 +127,7 @@
         });
 
         function newPlot() {
-            Plotly.newPlot('plotDiv', [], {
+            Plotly.newPlot('plotDiv', plotDiv.data, {
                 hovermode: false,
                 xaxis: {
                     title: 'x'

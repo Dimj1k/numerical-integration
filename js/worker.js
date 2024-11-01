@@ -189,7 +189,11 @@ function work() {
                                 if (!fn) {
                                     continue;
                                 }
-                                const m = new method(+a.replace(',', '.'), +b.replace(',', '.'), fn, ['x'], { eps: +eps, step: { x: +step.x }, polynom: polynom ? +polynom : undefined });
+                                const m = new method(+a.replace(',', '.', 1), +b.replace(',', '.', 1), fn, ['x'], {
+                                    eps: +eps.replace(',', '.', 1),
+                                    step: { x: +step.x.replace(',', '.', 1) },
+                                    polynom: polynom ? +polynom : undefined
+                                });
                                 postMessage({ status: 'plotFn', points: m.origPoints, fn: m.strFn, isY0: j == 1 });
                                 m.integrate();
                                 postMessage({ status: 'history', history: {...m.history, fn: m.strFn } });

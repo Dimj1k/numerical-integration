@@ -12,7 +12,7 @@ worker.onmessage = (e) => {
             {
                 const { history } = data;
                 totalTime += history.perf;
-                consoleOutput.value += `Вычислен y(x) = ${history.fn} за ${history.perf.toFixed(3)} мс. на x ∊ [${history.a}, ${history.b}]\nКоличество итераций: ${history.attempt}, шаг по x: ${history.endStep}\nЗначение интеграла ${history.S.toFixed(6)}\n`;
+                consoleOutput.value += `Вычислен y(x) = ${history.fn} за ${history.perf.toFixed(3)} мс. на x ∊ [${history.a}, ${history.b}]\nКоличество итераций: ${history.attempt}, шаг по x: ${history.endStep}\nЗначение интеграла ${history.S.toFixed(6)}\n\n`;
                 break;
             }
         case 'plotFn':
@@ -31,7 +31,7 @@ worker.onmessage = (e) => {
             }
         case 'end':
             {
-                consoleOutput.value += `---\nИтоговое значение интеграла: ${data.totalS}\nВычислено за: ${totalTime.toFixed(4)} мс.\n`;
+                consoleOutput.value += `-------------------\nИтоговое значение интеграла: ${data.totalS}\nВычислено за: ${totalTime.toFixed(4)} мс.\n`;
                 calculate.disabled = false;
                 break;
             }
@@ -88,7 +88,7 @@ function calc(target) {
         } else {
             out += `Интегрируемая функция y(x) = ${fns_i[0]}\n`;
         }
-        out += `Кусочно задан${haveY0 ? 'ы' : 'а'} на x ∊ [${limsA[i]}, ${limsB[i]}]\n`;
+        out += `Кусочно задан${haveY0 ? 'ы' : 'а'} на x ∊ [${limsA[i]}, ${limsB[i]}]\n\n-------------------\n\n`;
     }
     consoleOutput.value += out;
     worker.postMessage({ status: 'init', a: limsA, b: limsB, eps, step: { x: step }, fns, method, polynom });

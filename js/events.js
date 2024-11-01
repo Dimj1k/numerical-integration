@@ -41,8 +41,8 @@ function addNewFunction(event) {
 </div>
 </div>
 <div class="panel__min__inputs">
-<div class="vertical-label"><label for="f${idFn}a"><span class="panel__span">Начало x</span></label><input name="limFunctions" id="f${idFn}a"></div>
-<div class="vertical-label"><label for="f${idFn}b"><span class="panel__span">Конец x</span></label><input name="limFunctions" id="f${idFn}b"></div>
+<div class="vertical-label"><label for="f${idFn}a"><span class="panel__span">Начало x</span></label><input name="limFunctions" type="tel" id="f${idFn}a"></div>
+<div class="vertical-label"><label for="f${idFn}b"><span class="panel__span">Конец x</span></label><input name="limFunctions" type="tel" id="f${idFn}b"></div>
 </div>
 <input type="button" class="panel__button vrl" onkeyup="deleteFunction(event, ${idFn});" onclick="deleteFunction(event, ${idFn});" value="Удалить">
 </div>`;
