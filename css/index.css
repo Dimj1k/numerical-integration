@@ -215,7 +215,7 @@ input[type="radio"]:checked+.panel__method {
     }
 }
 
-.displaylt570px {
+.displaygt570px {
     display: none;
 }
 
@@ -236,10 +236,10 @@ input[type="radio"]:checked+.panel__method {
     h1 {
         font-size: 14.5pt;
     }
-    .hidegt570px {
+    .hidelt570px {
         display: none;
     }
-    .displaylt570px {
+    .displaygt570px {
         display: block;
     }
     #consoleOutput {

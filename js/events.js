@@ -1,13 +1,30 @@
 'use strict'
 
-const all_functions = document.getElementById("all_functions");
+const allFunctions = document.getElementById("all_functions");
 
 function methodSelect(event) {
     event.preventDefault();
     const { key, target } = event;
     if (key) {
+        if (key == 'ArrowLeft') {
+            const prev = target.previousElementSibling.previousElementSibling;
+            if (prev) {
+                prev.focus();
+                prev.click();
+            }
+        }
+        if (key == 'ArrowRight') {
+            const nextSibling = target.nextElementSibling;
+            if (nextSibling) {
+                const next = nextSibling.nextElementSibling;
+                if (next) {
+                    next.focus();
+                    next.click();
+                }
+            }
+        }
         if (key == ' ' || key == 'Enter') {
-            return target.click();
+            target.click();
         }
         return;
     }
@@ -16,13 +33,18 @@ let idFn = 2;
 
 function addNewFunction(event) {
     event.preventDefault();
-    const { key, target } = event;
+    const { key } = event;
     if (key) {
         if (key == ' ' || key == 'Enter') {
-            return target.click();
+            const fnDiv = addDivFunction();
+            fnDiv.querySelector('input').focus();
         }
         return;
     }
+    addDivFunction();
+}
+
+function addDivFunction() {
     const fnDiv = document.createElement('div');
     fnDiv.className = "panel__input__function";
     fnDiv.key = idFn;
@@ -47,7 +69,8 @@ function addNewFunction(event) {
 <button class="panel__button" onkeyup="deleteFunction(event, ${idFn});" onclick="deleteFunction(event, ${idFn});"><span class="vrl">Удалить</span></button>
 </div>`;
     idFn++;
-    all_functions.appendChild(fnDiv);
+    allFunctions.appendChild(fnDiv);
+    return fnDiv;
 }
 
 function deleteFunction(event, id) {
@@ -59,9 +82,9 @@ function deleteFunction(event, id) {
         }
         return;
     }
-    for (const child of all_functions.children) {
+    for (const child of allFunctions.children) {
         if (child.key == id) {
-            return all_functions.removeChild(child);
+            return allFunctions.removeChild(child);
         }
     }
 }

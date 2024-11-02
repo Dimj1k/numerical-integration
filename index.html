@@ -23,7 +23,7 @@
             <div id="plotDiv"></div>
             <div class="pre__panel">
                 <h2>Ввод:</h2>
-                <h2 class="hidegt570px">Вывод:</h2>
+                <h2 class="hidelt570px">Вывод:</h2>
             </div>
             <div class="panel">
                 <form class="panel__input" onsubmit="event.preventDefault(); calc(event.target);" onkeydown="if (event.key == 'Enter') {event.preventDefault();}" method="post">
@@ -57,8 +57,8 @@
                         <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly;" id="methods">
                             <input type="radio" value="trapezoidal" name="method" id="trapezoidal" checked><label role="radio" tabindex="0" onkeyup="methodSelect(event);" for="trapezoidal" class="panel__method">Трапеций</label>
                             <input type="radio" value="Simpson" name="method" id="Simpson"><label role="radio" tabindex="0" onkeyup="methodSelect(event);" for="Simpson" class="panel__method">Симпсона</label>
-                            <input type="radio" value="Gauss" name="method" id="Gauss"><label tabindex="0" role="radio" for="Gauss" onkeyup="methodSelect(event);" class="panel__method">Гаусса-Лежандра</label>
-                            <input type="radio" value="MonteKarlo" name="method" id="MonteKarlo" disabled><label tabindex="0" role="radio" onkeyup="methodSelect(event);" for="MonteKarlo" class="panel__method">Монте-Карло</label>
+                            <input type="radio" value="Gauss" name="method" id="Gauss"><label role="radio" tabindex="0" for="Gauss" onkeyup="methodSelect(event);" class="panel__method">Гаусса-Лежандра</label>
+                            <!-- <input type="radio" value="MonteKarlo" name="method" id="MonteKarlo" disabled><label role="radio" onkeyup="methodSelect(event);" for="MonteKarlo" class="panel__method">Монте-Карло</label> -->
                         </div>
                     </div>
                     <div class="panel__border panel__divider">
@@ -106,7 +106,7 @@
                     </div>
                 </form>
                 <div class="panel__output">
-                    <h2 class="displaylt570px" style="text-align: center; border-bottom: 1px solid green;">Вывод:</h2>
+                    <h2 class="displaygt570px" style="text-align: center; border-bottom: 1px solid green;">Вывод:</h2>
                     <textarea id="consoleOutput" readonly></textarea>
                 </div>
             </div>
