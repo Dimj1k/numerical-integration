@@ -56,9 +56,9 @@
                         <div role="radiogroup" aria-labelledby="choice_method">
                             <span class="panel__span" id="choice_method">Методы численного интегрирования</span>
                             <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly;" id="methods">
-                                <input type="radio" value="trapezoidal" name="method" id="trapezoidal" checked><span role="radio" onkeyup="methodSelect(event);" onclick="methodSelect(event);" class="panel__method">Трапеций</span>
-                                <input type="radio" value="Simpson" name="method" id="Simpson"><span role="radio" onkeyup="methodSelect(event);" onclick="methodSelect(event);" class="panel__method">Симпсона</span>
-                                <input type="radio" value="Gauss" name="method" id="Gauss"><span role="radio" onkeyup="methodSelect(event);" onclick="methodSelect(event);" class="panel__method">Гаусса-Лежандра</span>
+                                <input type="radio" value="trapezoidal" name="method" id="trapezoidal" aria-hidden="true" checked><span role="radio" onkeyup="methodSelect(event);" onclick="methodSelect(event);" class="panel__method">Трапеций</span>
+                                <input type="radio" value="Simpson" name="method" aria-hidden="true" id="Simpson"><span role="radio" onkeyup="methodSelect(event);" onclick="methodSelect(event);" class="panel__method">Симпсона</span>
+                                <input type="radio" value="Gauss" name="method" aria-hidden="true" id="Gauss"><span role="radio" onkeyup="methodSelect(event);" onclick="methodSelect(event);" class="panel__method">Гаусса-Лежандра</span>
                                 <!-- <input type="radio" value="MonteKarlo" name="method" id="MonteKarlo" disabled><label role="radio" onkeyup="methodSelect(event);" for="MonteKarlo" class="panel__method">Монте-Карло</label> -->
                             </div>
                         </div>

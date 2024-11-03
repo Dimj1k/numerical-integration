@@ -43,7 +43,7 @@ function methodSelect(event) {
             method.ariaChecked = true;
             const radio = method.previousElementSibling;
             radio.checked = true;
-        } else {
+        } else if (method instanceof HTMLSpanElement) {
             method.ariaChecked = false;
             method.tabIndex = -1;
         }
@@ -52,7 +52,9 @@ function methodSelect(event) {
 for (const method of methods) {
     if (method instanceof HTMLInputElement && method.type == 'radio') {
         const spanRadio = method.nextElementSibling;
+        const checked = method.checked;
         spanRadio.tabIndex = method.checked ? 0 : -1;
+        spanRadio.ariaChecked = checked;
     }
 }
 
