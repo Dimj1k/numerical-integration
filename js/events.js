@@ -1,35 +1,63 @@
 'use strict'
 
 const allFunctions = document.getElementById("all_functions");
+const methods = document.getElementById('methods').children;
 
 function methodSelect(event) {
     event.preventDefault();
     const { key, target } = event;
     if (key) {
         if (key == 'ArrowLeft') {
-            const prev = target.previousElementSibling.previousElementSibling;
-            if (prev) {
-                prev.focus();
-                prev.click();
+            const spanRadio = target.previousElementSibling.previousElementSibling;
+            if (spanRadio) {
+                target.tabIndex = -1;
+                target.ariaChecked = false;
+                const radio = spanRadio.previousElementSibling;
+                if (radio) {
+                    spanRadio.focus();
+                    spanRadio.tabIndex = 0;
+                    spanRadio.ariaChecked = true;
+                    radio.checked = true;
+                }
             }
-        }
-        if (key == 'ArrowRight') {
-            const nextSibling = target.nextElementSibling;
-            if (nextSibling) {
-                const next = nextSibling.nextElementSibling;
-                if (next) {
-                    next.focus();
-                    next.click();
+        } else if (key == 'ArrowRight') {
+            const radio = target.nextElementSibling;
+            if (radio) {
+                target.tabIndex = -1;
+                target.ariaChecked = false;
+                const spanRadio = radio.nextElementSibling;
+                if (spanRadio) {
+                    spanRadio.focus();
+                    spanRadio.tabIndex = 0;
+                    spanRadio.ariaChecked = true;
+                    radio.checked = true;
                 }
             }
         }
-        if (key == ' ' || key == 'Enter') {
-            target.click();
-        }
         return;
     }
+    for (const method of methods) {
+        if (method === target) {
+            method.focus();
+            method.tabIndex = 0;
+            method.ariaChecked = true;
+            const radio = method.previousElementSibling;
+            radio.checked = true;
+        } else {
+            method.ariaChecked = false;
+            method.tabIndex = -1;
+        }
+    }
 }
+for (const method of methods) {
+    if (method instanceof HTMLInputElement && method.type == 'radio') {
+        const spanRadio = method.nextElementSibling;
+        spanRadio.tabIndex = method.checked ? 0 : -1;
+    }
+}
+
 let idFn = 2;
+let numFn = 2;
 
 function addNewFunction(event) {
     event.preventDefault();
@@ -51,7 +79,7 @@ function addDivFunction() {
     fnDiv.innerHTML = `<div class="panel__max__inputs">
 <div class="vertical-label">
 <label for="f${idFn}">
-<span class="panel__span">Кусочно-заданная функция ${idFn} y(x)</span>
+<span class="panel__span">Кусочно-заданная функция ${numFn++} y(x)</span>
 </label>
 <input id="f${idFn}" name="functions">
 </div>
@@ -82,9 +110,14 @@ function deleteFunction(event, id) {
         }
         return;
     }
-    for (const child of allFunctions.children) {
+    numFn--;
+    let i = 1;
+    const childrens = Array.from(allFunctions.children);
+    for (const child of childrens) {
         if (child.key == id) {
-            return allFunctions.removeChild(child);
+            allFunctions.removeChild(child);
+        } else {
+            child.querySelector('label').children[0].textContent = `Кусочно-заданная функция ${i++} y(x)`;
         }
     }
 }

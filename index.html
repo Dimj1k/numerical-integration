@@ -53,12 +53,14 @@
                         <input type="button" class="panel__button" onkeyup="addNewFunction(event);" onclick="addNewFunction(event);" value="Добавить кусочно-заданную функцию">
                     </div>
                     <div class="panel__border">
-                        <span class="panel__span">Методы численного интегрирования</span>
-                        <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly;" id="methods">
-                            <input type="radio" value="trapezoidal" name="method" id="trapezoidal" checked><label role="radio" tabindex="0" onkeyup="methodSelect(event);" for="trapezoidal" class="panel__method">Трапеций</label>
-                            <input type="radio" value="Simpson" name="method" id="Simpson"><label role="radio" tabindex="0" onkeyup="methodSelect(event);" for="Simpson" class="panel__method">Симпсона</label>
-                            <input type="radio" value="Gauss" name="method" id="Gauss"><label role="radio" tabindex="0" for="Gauss" onkeyup="methodSelect(event);" class="panel__method">Гаусса-Лежандра</label>
-                            <!-- <input type="radio" value="MonteKarlo" name="method" id="MonteKarlo" disabled><label role="radio" onkeyup="methodSelect(event);" for="MonteKarlo" class="panel__method">Монте-Карло</label> -->
+                        <div role="radiogroup" aria-labelledby="choice_method">
+                            <span class="panel__span" id="choice_method">Методы численного интегрирования</span>
+                            <div style="display: flex; flex-wrap: wrap; justify-content: space-evenly;" id="methods">
+                                <input type="radio" value="trapezoidal" name="method" id="trapezoidal" checked><span role="radio" onkeyup="methodSelect(event);" onclick="methodSelect(event);" class="panel__method">Трапеций</span>
+                                <input type="radio" value="Simpson" name="method" id="Simpson"><span role="radio" onkeyup="methodSelect(event);" onclick="methodSelect(event);" class="panel__method">Симпсона</span>
+                                <input type="radio" value="Gauss" name="method" id="Gauss"><span role="radio" onkeyup="methodSelect(event);" onclick="methodSelect(event);" class="panel__method">Гаусса-Лежандра</span>
+                                <!-- <input type="radio" value="MonteKarlo" name="method" id="MonteKarlo" disabled><label role="radio" onkeyup="methodSelect(event);" for="MonteKarlo" class="panel__method">Монте-Карло</label> -->
+                            </div>
                         </div>
                     </div>
                     <div class="panel__border panel__divider">
