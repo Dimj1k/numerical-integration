@@ -114,10 +114,9 @@ function deleteFunction(event, id) {
     }
     numFn--;
     let i = 1;
-    const childrens = Array.from(allFunctions.children);
-    for (const child of childrens) {
+    for (const child of allFunctions.children) {
         if (child.key == id) {
-            allFunctions.removeChild(child);
+            Promise.resolve().then(() => allFunctions.removeChild(child));
         } else {
             child.querySelector('label').children[0].textContent = `Кусочно-заданная функция ${i++} y(x)`;
         }
