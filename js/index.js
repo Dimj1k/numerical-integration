@@ -80,7 +80,7 @@ function calc(target) {
     if (!fns.length) {
         return;
     }
-    let out = `Начальный шаг: ${step}\nПределы интегрирования от ${a} до ${b}\n${method != 'Gauss' ? `Метод ${ruMethods[method]}` : `Метод ${ruMethods[method]}, порядок полинома Лежандра ${polynom}`}\n`;
+    let out = `Начальный шаг: ${step}\nПределы интегрирования от ${a} до ${b}\n${method != 'Gauss' ? `Метод ${ruMethods[method]}` : `Метод ${ruMethods[method]}, порядок многочлена Лежандра ${polynom}`}\n`;
     for (const [i, fns_i] of fns.entries()) {
         const haveY0 = fns_i[1]; 
         if (haveY0) {
