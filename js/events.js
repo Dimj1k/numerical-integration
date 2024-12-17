@@ -81,13 +81,13 @@ function addDivFunction() {
     fnDiv.innerHTML = `<div class="panel__max__inputs">
 <div class="vertical-label">
 <label for="f${idFn}">
-<span class="panel__span">Кусочно-заданная функция ${numFn++}. Верхнее ограничение y(x)</span>
+<span class="panel__span small__font-size">Кусочно-заданная функция ${numFn++}. Верхнее ограничение y(x)</span>
 </label>
 <input id="f${idFn}" name="functions">
 </div>
 <div class="vertical-label">
 <label for="y0${idFn}">
-<span class="panel__span">Нижнее ограничение y0(x)</span>
+<span class="panel__span small__font-size">Нижнее ограничение y0(x)</span>
 </label>
 <input id="y0${idFn}" name="functions" placeholder="0" value="0">
 </div>
@@ -118,7 +118,7 @@ function deleteFunction(event, id) {
         if (child.key == id) {
             Promise.resolve().then(() => allFunctions.removeChild(child));
         } else {
-            child.querySelector('label').children[0].textContent = `Кусочно-заданная функция ${i++} y(x)`;
+            child.querySelector('label').children[0].textContent = `Кусочно-заданная функция ${i++}. Верхнее ограничение y(x)`;
         }
     }
 }
